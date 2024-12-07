@@ -223,7 +223,9 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {}
+function toNumber(value, def) {
+  return +value ? +value : def;
+}
 
 /**
  * Returns the cube of the given number.
@@ -236,8 +238,8 @@ function toNumber(value, def) {}
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -253,8 +255,16 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0) return 0;
+  let a = 1;
+  let b = 1;
+  for (let i = 3; i <= index; i += 1) {
+    const c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
 }
 
 /**
